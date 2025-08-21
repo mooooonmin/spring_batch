@@ -22,6 +22,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-batch'
     runtimeOnly 'com.h2database:h2'
 
+    implementation 'ch.qos.logback:logback-classic:1.5.13'
+    implementation 'ch.qos.logback:logback-core:1.5.13'
+    implementation 'org.slf4j:slf4j-api:2.1.0-alpha1'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.batch:spring-batch-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
