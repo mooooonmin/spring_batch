@@ -1,6 +1,8 @@
 package com.system.batch.kill_batch_system.part01;
 
 import org.springframework.batch.core.configuration.support.DefaultBatchConfiguration;
+import org.springframework.batch.core.converter.JobParametersConverter;
+import org.springframework.batch.core.converter.JsonJobParametersConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
@@ -31,5 +33,15 @@ public class BatchConfig extends DefaultBatchConfiguration {
     @Bean
     public PlatformTransactionManager transactionManager() {
         return new DataSourceTransactionManager(dataSource());
+    }
+
+    /**
+     * JSON 기반 파라미터 표기법을 사용하려면 JsonJobParametersConverter가 필요
+     * DefaultJobParametersConverter를 계승한 클래스로,
+     * 내부적으로 ObjectMapper를 사용해 JSON 형태의 파라미터 표기를 해석한다.
+     */
+    @Bean
+    public JobParametersConverter jobParametersConverter() {
+        return new JsonJobParametersConverter();
     }
 }
